@@ -13,6 +13,24 @@ fact relacaoFuncionarioPaciente{
 	all f: Funcionario | #f.paciente < 6 
 }
 
+fact atendimentoPacienteCirurgiado{
+	all p:PacienteCirurgiado  | funcionariosDoPacienteCirurgiado[p]
+}
+
+fact atendimentoPacienteNaoCirurgiado{
+	all p:PacienteNaoCirurgiado  | funcionariosDoPacienteNaoCirurgiado[p]
+}
+
+pred funcionariosDoPacienteCirurgiado[p: PacienteCirurgiado]{
+	one getMedicosPacienteCirurgiado[p]
+	#(getEnfermeiroPacienteCirurgiado [p])=2
+}
+
+pred funcionariosDoPacienteNaoCirurgiado[p: PacienteNaoCirurgiado]{
+	no getMedicosPacienteNaoCirurgiado[p]
+	one getEnfermeiroPacienteNaoCirurgiado[p]
+}
+
 fun getMedicosPacienteCirurgiado [p: PacienteCirurgiado] : set Medico {
     Medico & p.~paciente
 }
