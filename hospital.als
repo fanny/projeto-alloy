@@ -46,5 +46,53 @@ fun getMedicosPacienteNaoCirurgiado [p: PacienteNaoCirurgiado] : set Medico {
     Medico & p.~paciente
 }
 
+assert testPacienteTemNoMinimoUmEnfermeiro{
+	all p : Paciente | #(Enfermeiro & p.~paciente) > 0
+}
+
+--check testPacienteTemNoMinimoUmEnfermeiro for 20
+
+assert testPacienteCirurgiadoTemDoisEnfermeiros{
+	all p : PacienteCirurgiado | #(Enfermeiro & p.~paciente) = 2
+}
+
+--check testPacienteCirurgiadoTemDoisEnfermeiros for 20
+
+assert testPacienteCirurgiadoTemUmMedico{
+	all p : PacienteCirurgiado | #(Medico & p.~paciente) = 1
+}
+
+--check testPacienteCirurgiadoTemUmMedico for 20
+
+assert testPacienteNaoCirurgiadoTemUmEnfermeiro{
+	all p : PacienteNaoCirurgiado | #(Enfermeiro & p.~paciente) = 1
+}
+
+--check testPacienteNaoCirurgiadoTemUmEnfermeiro for 20
+
+assert testEnfermeiroTemNoMaximoCincoPacientes{
+	all e : Enfermeiro | #e.paciente <= 5
+}
+
+--check testeEnfermeiroTemNoMaximoCincoPacientes for 20
+
+assert testMedicoTemNoMaximoCincoPacientes{
+	all m : Medico | #m.paciente <= 5
+}
+
+--check testMedicoTemNoMaximoCincoPacientes for 20
+
+assert testeFuncionarios{
+	Funcionario = Medico + Enfermeiro
+}
+
+--check testeFuncionarios for 20
+
+assert testePacientes{
+	Paciente = PacienteCirurgiado + PacienteNaoCirurgiado
+}
+
+--check testePacientes for 20
+
 pred show[]{}
 run show for 60
