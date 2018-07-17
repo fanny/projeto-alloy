@@ -9,7 +9,7 @@ Todo paciente cirurgiado terá que ser atendido por 1 médico e 2 enfermeiros, e
 Somente o médico realiza as cirurgias e os enfermeiros são encarregados de medir a pressão, aplicar soro e ministrar medicamentos nos pacientes. E para que não haja funcionários sobrecarregados, um médico e um enfermeiro só podem atender, no máximo, 5 pacientes. <br/> 
 
 ## Integrantes
-[@Douglas Lima](https://github.com/douglaslimaxx)
-[@Fanny Vieira](https://github.com/FannyVieira)
-[@Marcus Vinicius](https://github.com/ViniFarias)
-[@Rayla Medeiros](https://github.com/RaylaMedeiros)
+[@Douglas Lima](https://github.com/douglaslimaxx)<br/> 
+[@Fanny Vieira](https://github.com/FannyVieira)<br/> 
+[@Marcus Vinicius](https://github.com/ViniFarias)<br/> 
+[@Rayla Medeiros](https://github.com/RaylaMedeiros)<br/> 
