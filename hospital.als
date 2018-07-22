@@ -68,6 +68,22 @@ fun getMedicosPacienteNaoCirurgiado [p: PacienteNaoCirurgiado] : set Medico {
     Medico & p.~paciente
 }
 
+fun medePressao[]: set Funcionario{
+    Enfermeiro
+}
+
+fun aplicaSoro[]: set Funcionario{
+    Enfermeiro
+}
+
+fun ministraMedicamentos[]: set Funcionario{
+    Enfermeiro
+}
+
+fun realizaCirurgias[]: set Funcionario{
+    Medico
+}
+
 -----------------------------------------------------------------------------------------------------------
 -- TESTES
 -----------------------------------------------------------------------------------------------------------
