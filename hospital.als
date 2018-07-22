@@ -1,4 +1,5 @@
 module hospital
+
 -----------------------------------------------------------------------------------------------------------
 -- ASSINATURAS
 -----------------------------------------------------------------------------------------------------------
@@ -6,12 +7,17 @@ module hospital
 abstract sig Funcionario {
 	paciente: set Paciente
 }
+
 sig Medico extends Funcionario{}
+
 sig Enfermeiro extends Funcionario{}
 
 abstract sig Paciente{}
+
 sig PacienteCirurgiado extends Paciente{} 
+
 sig PacienteNaoCirurgiado extends Paciente{}
+
 -----------------------------------------------------------------------------------------------------------
 -- FATOS
 -----------------------------------------------------------------------------------------------------------
@@ -27,9 +33,11 @@ fact atendimentoPacienteCirurgiado{
 fact atendimentoPacienteNaoCirurgiado{
 	all p:PacienteNaoCirurgiado  | funcionariosDoPacienteNaoCirurgiado[p]
 }
+
 -----------------------------------------------------------------------------------------------------------
 -- PREDICADOS
 -----------------------------------------------------------------------------------------------------------
+
 pred funcionariosDoPacienteCirurgiado[p: PacienteCirurgiado]{
 	one getMedicosPacienteCirurgiado[p]
 	#(getEnfermeiroPacienteCirurgiado [p])=2
@@ -39,9 +47,11 @@ pred funcionariosDoPacienteNaoCirurgiado[p: PacienteNaoCirurgiado]{
 	no getMedicosPacienteNaoCirurgiado[p]
 	one getEnfermeiroPacienteNaoCirurgiado[p]
 }
+
 -----------------------------------------------------------------------------------------------------------
 -- FUNÇÕES
 -----------------------------------------------------------------------------------------------------------
+
 fun getMedicosPacienteCirurgiado [p: PacienteCirurgiado] : set Medico {
     Medico & p.~paciente
 }
@@ -49,6 +59,7 @@ fun getMedicosPacienteCirurgiado [p: PacienteCirurgiado] : set Medico {
 fun getEnfermeiroPacienteCirurgiado [p: PacienteCirurgiado] : set Enfermeiro {
     Enfermeiro & p.~paciente
 }
+
 fun getEnfermeiroPacienteNaoCirurgiado [p: PacienteNaoCirurgiado] : set Enfermeiro {
     Enfermeiro & p.~paciente
 }
@@ -56,9 +67,11 @@ fun getEnfermeiroPacienteNaoCirurgiado [p: PacienteNaoCirurgiado] : set Enfermei
 fun getMedicosPacienteNaoCirurgiado [p: PacienteNaoCirurgiado] : set Medico {
     Medico & p.~paciente
 }
+
 -----------------------------------------------------------------------------------------------------------
 -- TESTES
 -----------------------------------------------------------------------------------------------------------
+
 assert testPacienteTemNoMinimoUmEnfermeiro{
 	all p : Paciente | #(Enfermeiro & p.~paciente) > 0
 }
