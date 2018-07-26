@@ -124,17 +124,23 @@ assert testMedicoTemNoMaximoCincoPacientes{
 
 check testMedicoTemNoMaximoCincoPacientes for 20
 
-assert testeFuncionarios{
+assert testFuncionarios{
 	Funcionario = Medico + Enfermeiro
 }
 
-check testeFuncionarios for 20
+check testFuncionarios for 20
 
-assert testePacientes{
+assert testPacientes{
 	Paciente = PacienteCirurgiado + PacienteNaoCirurgiado
 }
 
-check testePacientes for 20
+check testPacientes for 20
+
+assert testMedePressao{
+	all e:medirPressao[] | e in Enfermeiro
+}
+
+check testMedePressao for 20
 
 pred show[]{}
 run show for 20
