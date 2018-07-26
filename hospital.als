@@ -23,7 +23,7 @@ sig PacienteNaoCirurgiado extends Paciente{}
 -----------------------------------------------------------------------------------------------------------
 
 fact relacaoFuncionarioPaciente{
-	all f: Funcionario | #f.paciente < 6 
+	all f: Funcionario | qtdePacientesDoFuncionario[f] 
 }
 
 fact atendimentoPacienteCirurgiado{
@@ -37,6 +37,10 @@ fact atendimentoPacienteNaoCirurgiado{
 -----------------------------------------------------------------------------------------------------------
 -- PREDICADOS
 -----------------------------------------------------------------------------------------------------------
+
+pred qtdePacientesDoFuncionario[f: Funcionario]{
+	#f.paciente < 6
+}
 
 pred funcionariosDoPacienteCirurgiado[p: PacienteCirurgiado]{
 	one getMedicosPacienteCirurgiado[p]
