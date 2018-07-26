@@ -137,10 +137,26 @@ assert testPacientes{
 check testPacientes for 20
 
 assert testMedePressao{
-	all e:medirPressao[] | e in Enfermeiro
+	all e:medePressao[] | e in Enfermeiro
 }
 
 check testMedePressao for 20
+
+assert testAplicaSoro{
+	all e:aplicaSoro[] | e in Enfermeiro
+}
+
+check testAplicaSoro for 20
+
+assert testMinistraMedicamentos{
+	all e:ministraMedicamentos | e in Enfermeiro
+}
+
+check testMinistraMedicamentos for 20
+
+assert testRealizaCirurgias{
+	all m:realizaCirurgias | m in Medico
+}
 
 pred show[]{}
 run show for 20
